@@ -1,5 +1,5 @@
 /**
- * API Client library for SprintReady Backend.
+ * API Client library for Gativ Backend.
  */
 
 export interface AuditAnalyzeRequest {
@@ -61,6 +61,16 @@ export interface VerifyStepResponse {
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
+function extractErrorMessage(errorData: any, fallbackMessage: string): string {
+  if (!errorData) return fallbackMessage;
+  if (typeof errorData.detail === 'string') return errorData.detail;
+  if (Array.isArray(errorData.detail)) {
+    return errorData.detail.map((d: any) => d.msg || d.detail || JSON.stringify(d)).join('; ');
+  }
+  if (typeof errorData.message === 'string') return errorData.message;
+  return fallbackMessage;
+}
+
 /**
  * Trigger candidate repository audit and Gemini gap analysis.
  */
@@ -79,7 +89,7 @@ export async function analyzeAudit(
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(
-      errorData.detail || `Audit request failed with status ${response.status}`
+      extractErrorMessage(errorData, `Audit request failed with status ${response.status}`)
     );
   }
 
@@ -106,7 +116,7 @@ export async function verifySprintStep(
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(
-      errorData.detail || `Step verification failed with status ${response.status}`
+      extractErrorMessage(errorData, `PR verification failed: PR not found or has no code changes (HTTP ${response.status})`)
     );
   }
 

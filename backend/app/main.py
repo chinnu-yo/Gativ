@@ -8,7 +8,7 @@ from app.api.v1.router import api_v1_router
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="SprintReady B2B2C Developer Readiness Assessment and Placement Engine API",
+    description="Gativ B2B2C Developer Readiness Assessment and Placement Engine API",
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 

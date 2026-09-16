@@ -16,7 +16,7 @@ class GitHubService:
         """Construct request headers with GitHub token."""
         headers = {
             "Accept": "application/vnd.github.v3+json",
-            "User-Agent": "SprintReady-Audit-Agent/1.0",
+            "User-Agent": "Gativ-Audit-Agent/1.0",
         }
         if token and token.strip() and not token.startswith("mock_") and not token.startswith("gho_demo"):
             headers["Authorization"] = f"Bearer {token}"

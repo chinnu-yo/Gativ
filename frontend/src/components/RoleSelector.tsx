@@ -88,20 +88,20 @@ export default function RoleSelector({
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-8 bg-slate-900/60 p-8 rounded-3xl border border-slate-800 backdrop-blur shadow-2xl">
+    <div className="w-full max-w-4xl mx-auto space-y-8 bg-white dark:bg-zinc-900/60 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 backdrop-blur shadow-sm dark:shadow-2xl transition-colors">
       <div className="text-center space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
           Select Your Target Job Role & Benchmark Tier
         </h2>
-        <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-          SprintReady will harvest your GitHub code signals and run a Gemini LLM gap analysis tailored to your target position.
+        <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base max-w-xl mx-auto">
+          Gativ will harvest your GitHub code signals and run a Gemini LLM gap analysis tailored to your target position.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Step 1: Target Role Cards */}
         <div className="space-y-3">
-          <label className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+          <label className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
             <span>1. Select Target Job Lane</span>
           </label>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -115,30 +115,30 @@ export default function RoleSelector({
                   onClick={() => setSelectedRole(role.id)}
                   className={`p-5 rounded-2xl border text-left transition-all duration-200 relative flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-emerald-500/10 border-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.15)]'
-                      : 'bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-950'
+                      ? 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-500 text-zinc-900 dark:text-white shadow-sm'
+                      : 'bg-zinc-50 dark:bg-zinc-950/60 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-950'
                   }`}
                 >
                   {isSelected && (
-                    <CheckCircle2 className="absolute top-4 right-4 w-5 h-5 text-emerald-400" />
+                    <CheckCircle2 className="absolute top-4 right-4 w-5 h-5 text-emerald-500" />
                   )}
                   <div>
                     <div className="flex items-center gap-2.5 mb-3">
                       <div
                         className={`p-2 rounded-xl border ${
                           isSelected
-                            ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
-                            : 'bg-slate-900 text-slate-400 border-slate-800'
+                            ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border-emerald-500/30'
+                            : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800'
                         }`}
                       >
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                      <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700">
                         {role.badge}
                       </span>
                     </div>
-                    <h4 className="font-bold text-base mb-1 text-white">{role.title}</h4>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <h4 className="font-bold text-base mb-1 text-zinc-900 dark:text-white">{role.title}</h4>
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                       {role.description}
                     </p>
                   </div>
@@ -152,7 +152,7 @@ export default function RoleSelector({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Company Tier */}
           <div className="space-y-3">
-            <label className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+            <label className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
               <span>2. Target Company Tier</span>
             </label>
             <div className="grid grid-cols-1 gap-3">
@@ -166,22 +166,22 @@ export default function RoleSelector({
                     onClick={() => setCompanyTier(tier.id)}
                     className={`p-4 rounded-xl border text-left flex items-center gap-3 transition-all ${
                       isSelected
-                        ? 'bg-emerald-500/10 border-emerald-500 text-white'
-                        : 'bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                        ? 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-500 text-zinc-900 dark:text-white'
+                        : 'bg-zinc-50 dark:bg-zinc-950/60 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-300 dark:hover:border-zinc-700'
                     }`}
                   >
                     <div
                       className={`p-2 rounded-lg ${
                         isSelected
-                          ? 'bg-emerald-500/20 text-emerald-400'
-                          : 'bg-slate-900 text-slate-400'
+                          ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
+                          : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400'
                       }`}
                     >
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-sm text-white">{tier.title}</h5>
-                      <p className="text-xs text-slate-400">{tier.description}</p>
+                      <h5 className="font-semibold text-sm text-zinc-900 dark:text-white">{tier.title}</h5>
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400">{tier.description}</p>
                     </div>
                   </button>
                 );
@@ -192,14 +192,14 @@ export default function RoleSelector({
           {/* Duration & GitHub Token */}
           <div className="space-y-4">
             <div className="space-y-2">
-              <label className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+              <label className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
                 <Clock className="w-3.5 h-3.5" />
                 <span>Sprint Plan Duration</span>
               </label>
               <select
                 value={sprintDuration}
                 onChange={(e) => setSprintDuration(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 transition-colors font-mono"
+                className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-900 dark:text-zinc-200 focus:outline-none focus:border-emerald-500 transition-colors font-mono"
               >
                 <option value={2}>48 Hours (Rapid Sprint)</option>
                 <option value={7}>7 Days (Standard Sprint)</option>
@@ -208,21 +208,21 @@ export default function RoleSelector({
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+              <label className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
                 <Key className="w-3.5 h-3.5" />
                 <span>GitHub Connection Status</span>
               </label>
               {githubToken ? (
-                <div className="w-full bg-slate-950/80 border border-emerald-500/30 rounded-xl px-4 py-2.5 text-sm text-emerald-400 font-medium flex items-center gap-2 font-mono">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="w-full bg-zinc-50 dark:bg-zinc-950/80 border border-emerald-500/30 rounded-xl px-4 py-2.5 text-sm text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-2 font-mono">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
                   <span>✓ GitHub Account Connected</span>
                 </div>
               ) : (
-                <div className="w-full bg-slate-950/80 border border-amber-500/30 rounded-xl px-4 py-2.5 text-sm text-amber-400 font-medium flex items-center gap-2 font-mono">
+                <div className="w-full bg-zinc-50 dark:bg-zinc-950/80 border border-amber-500/30 rounded-xl px-4 py-2.5 text-sm text-amber-600 dark:text-amber-400 font-medium flex items-center gap-2 font-mono">
                   <span>GitHub Account Not Connected</span>
                 </div>
               )}
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-zinc-500">
                 Secure session active. Token is used strictly to read public repo structures & commits.
               </p>
             </div>
@@ -234,16 +234,16 @@ export default function RoleSelector({
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-base transition-all shadow-[0_0_30px_rgba(16,185,129,0.25)] disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-zinc-950 font-bold text-base transition-all shadow-md disabled:opacity-50"
           >
             {isLoading ? (
               <>
-                <div className="w-5 h-5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-white dark:border-zinc-950 border-t-transparent rounded-full animate-spin" />
                 <span>Harvesting GitHub Signals & Running Gemini Audit...</span>
               </>
             ) : (
               <>
-                <Zap className="w-5 h-5 fill-slate-950" />
+                <Zap className="w-5 h-5 fill-white dark:fill-zinc-950" />
                 <span>Execute Role Gap Audit</span>
               </>
             )}

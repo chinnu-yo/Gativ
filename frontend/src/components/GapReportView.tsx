@@ -33,19 +33,19 @@ export default function GapReportView({
     switch (severity.toUpperCase()) {
       case 'HIGH':
         return (
-          <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30">
+          <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/30">
             HIGH SEVERITY
           </span>
         );
       case 'MEDIUM':
         return (
-          <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-amber-400/10 text-amber-400 border border-amber-400/30">
+          <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-amber-400/10 text-amber-600 dark:text-amber-400 border border-amber-400/30">
             MEDIUM SEVERITY
           </span>
         );
       default:
         return (
-          <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
+          <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700">
             LOW SEVERITY
           </span>
         );
@@ -53,35 +53,35 @@ export default function GapReportView({
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10';
-    if (score >= 60) return 'text-amber-400 border-amber-400/30 bg-amber-400/10';
-    return 'text-rose-400 border-rose-500/30 bg-rose-500/10';
+    if (score >= 80) return 'text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/10';
+    if (score >= 60) return 'text-amber-600 dark:text-amber-400 border-amber-400/30 bg-amber-400/10';
+    return 'text-rose-600 dark:text-rose-400 border-rose-500/30 bg-rose-500/10';
   };
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8 animate-in fade-in duration-300">
       {/* Top Banner Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-slate-900/60 border border-slate-800 backdrop-blur">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 backdrop-blur shadow-sm">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950 border border-slate-800 text-emerald-400 text-xs font-mono mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-emerald-600 dark:text-emerald-400 text-xs font-mono mb-2">
             <Sparkles className="w-3 h-3" /> Gemini LLM Audit Complete
           </div>
-          <h2 className="text-2xl font-bold text-white tracking-tight">
-            Role Gap Report: <span className="text-emerald-400 font-mono">{targetRole}</span>
+          <h2 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">
+            Role Gap Report: <span className="text-emerald-600 dark:text-emerald-400 font-mono">{targetRole}</span>
           </h2>
         </div>
         <div className="flex items-center gap-3">
           {onViewProjects && (
             <button
               onClick={onViewProjects}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 text-xs font-mono transition-colors border border-teal-500/30 self-start sm:self-auto"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-50 dark:bg-teal-500/10 hover:bg-teal-100 dark:hover:bg-teal-500/20 text-teal-700 dark:text-teal-300 text-xs font-mono transition-colors border border-teal-500/30 self-start sm:self-auto"
             >
               <FolderGit2 className="w-3.5 h-3.5" /> Recommended Projects
             </button>
           )}
           <button
             onClick={onReset}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono transition-colors border border-slate-700 self-start sm:self-auto"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-xs font-mono transition-colors border border-zinc-200 dark:border-zinc-700 self-start sm:self-auto"
           >
             <RotateCcw className="w-3.5 h-3.5" /> Re-audit
           </button>
@@ -91,17 +91,17 @@ export default function GapReportView({
       {/* Main Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Score Meter Card */}
-        <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between items-center text-center">
-          <div className="flex items-center gap-2 text-slate-400 text-xs font-mono uppercase tracking-wider mb-4">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+        <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between items-center text-center shadow-sm">
+          <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs font-mono uppercase tracking-wider mb-4">
+            <ShieldCheck className="w-4 h-4 text-emerald-500" />
             <span>360° Readiness Index</span>
             
             {/* Hover Tooltip */}
             <div className="relative group/tooltip flex items-center">
-              <Info className="w-3.5 h-3.5 text-slate-500 hover:text-emerald-400 cursor-help transition-colors" />
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover/tooltip:block w-64 p-3 bg-slate-900 border border-slate-700 text-[11px] font-sans text-slate-200 rounded-xl shadow-2xl z-50 pointer-events-none text-left">
+              <Info className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 hover:text-emerald-500 cursor-help transition-colors" />
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover/tooltip:block w-64 p-3 bg-zinc-900 text-white dark:bg-zinc-900 dark:text-zinc-200 border border-zinc-700 text-[11px] font-sans rounded-xl shadow-2xl z-50 pointer-events-none text-left">
                 Calculated dynamically by analyzing test suite coverage, containerization, documentation, and architecture signals against tier benchmark rubrics.
-                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-700" />
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-700" />
               </div>
             </div>
           </div>
@@ -114,10 +114,10 @@ export default function GapReportView({
             <span className="text-4xl font-extrabold font-mono tracking-tight">
               {report.readiness_score}
             </span>
-            <span className="text-[10px] text-slate-400 font-mono uppercase">out of 100</span>
+            <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono uppercase">out of 100</span>
           </div>
 
-          <p className="text-xs text-slate-400 mt-3">
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-3">
             {report.readiness_score >= 75
               ? 'Strong alignment with target role standard.'
               : 'Gap areas detected requiring a focused sprint.'}
@@ -125,19 +125,19 @@ export default function GapReportView({
         </div>
 
         {/* Top Strengths Card */}
-        <div className="md:col-span-2 p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+        <div className="md:col-span-2 p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between shadow-sm">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+              <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>Verified Code Strengths</span>
                 
                 {/* Hover Tooltip */}
                 <div className="relative group/tooltip flex items-center">
-                  <Info className="w-3.5 h-3.5 text-slate-500 hover:text-emerald-400 cursor-help transition-colors" />
-                  <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover/tooltip:block w-64 p-3 bg-slate-900 border border-slate-700 text-[11px] font-sans text-slate-200 rounded-xl shadow-2xl z-50 pointer-events-none text-left">
+                  <Info className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 hover:text-emerald-500 cursor-help transition-colors" />
+                  <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover/tooltip:block w-64 p-3 bg-zinc-900 text-white dark:bg-zinc-900 dark:text-zinc-200 border border-zinc-700 text-[11px] font-sans rounded-xl shadow-2xl z-50 pointer-events-none text-left">
                     Ground-truth code signals explicitly verified in your connected GitHub repositories.
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-700" />
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-700" />
                   </div>
                 </div>
               </h3>
@@ -147,16 +147,16 @@ export default function GapReportView({
               {report.top_strengths.map((strength, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 text-xs text-slate-200"
+                  className="flex items-start gap-3 p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800/80 text-xs text-zinc-800 dark:text-zinc-200"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
                   <span>{strength}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500 font-mono">
+          <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between text-xs text-zinc-500 font-mono">
             <span>Harvested from repository signals</span>
             <span>Gemini Evaluated</span>
           </div>
@@ -164,17 +164,17 @@ export default function GapReportView({
       </div>
 
       {/* Detected Gaps Section */}
-      <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+      <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 space-y-4 shadow-sm">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+          <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-2">
             <AlertTriangle className="w-4 h-4" />
             <span>Detected Technical Role Gaps ({report.detected_gaps.length})</span>
           </h3>
-          <span className="text-xs text-slate-500 font-mono">Prioritized by severity</span>
+          <span className="text-xs text-zinc-500 font-mono">Prioritized by severity</span>
         </div>
 
         {report.detected_gaps.length === 0 ? (
-          <div className="text-center py-8 text-slate-400 text-sm">
+          <div className="text-center py-8 text-zinc-500 dark:text-zinc-400 text-sm">
             No critical gaps detected! Profile meets target role requirements.
           </div>
         ) : (
@@ -182,15 +182,15 @@ export default function GapReportView({
             {report.detected_gaps.map((gap: GapItem, index: number) => (
               <div
                 key={index}
-                className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-slate-700 transition-colors"
+                className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wide">
+                    <span className="text-xs font-mono font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
                       {gap.category}
                     </span>
                   </div>
-                  <p className="text-sm text-slate-200 font-medium">{gap.issue}</p>
+                  <p className="text-sm text-zinc-900 dark:text-zinc-200 font-medium">{gap.issue}</p>
                 </div>
                 <div className="shrink-0">{getSeverityBadge(gap.severity)}</div>
               </div>
@@ -200,7 +200,7 @@ export default function GapReportView({
       </div>
 
       {/* Recommended Sprint Action Card */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900/80 to-slate-900/80 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+      <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-900/10 via-zinc-900/90 to-zinc-900/90 dark:from-emerald-950/40 dark:via-zinc-900/80 dark:to-zinc-900/80 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl text-white">
         <div className="space-y-1 text-center sm:text-left">
           <div className="inline-flex items-center gap-1.5 text-emerald-400 text-xs font-mono font-semibold uppercase tracking-wider">
             <Layers className="w-3.5 h-3.5" />
@@ -209,14 +209,14 @@ export default function GapReportView({
           <h3 className="text-lg font-bold text-white">
             {report.recommended_sprint.title}
           </h3>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-zinc-300">
             Contains {report.recommended_sprint.milestones.length} actionable proof-of-work milestones.
           </p>
         </div>
 
         <button
           onClick={onProceedToSprint}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm transition-all shadow-[0_0_25px_rgba(16,185,129,0.3)] shrink-0"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm transition-all shadow-md shrink-0"
         >
           <span>Launch Sprint Board</span>
           <ArrowRight className="w-4 h-4" />

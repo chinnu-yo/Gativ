@@ -100,19 +100,19 @@ export default function SprintBoard({
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8">
       {/* Top Header Card */}
-      <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 backdrop-blur space-y-4">
+      <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 backdrop-blur space-y-4 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950 border border-slate-800 text-emerald-400 text-xs font-mono mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-emerald-600 dark:text-emerald-400 text-xs font-mono mb-2">
               <Layers className="w-3.5 h-3.5" /> 48-Hour Proof of Work Sprint Execution
             </div>
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">
               {sprint.title}
             </h2>
           </div>
           <button
             onClick={onBackToReport}
-            className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700 transition-colors self-start sm:self-auto"
+            className="px-4 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-xs font-mono border border-zinc-200 dark:border-zinc-700 transition-colors self-start sm:self-auto"
           >
             ← Back to Gap Report
           </button>
@@ -120,11 +120,11 @@ export default function SprintBoard({
 
         {/* Progress Bar */}
         <div className="space-y-2 pt-2">
-          <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+          <div className="flex items-center justify-between text-xs font-mono text-zinc-500 dark:text-zinc-400">
             <span>Sprint Completion Progress</span>
-            <span className="text-emerald-400 font-bold">{progressPct}% Complete</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold">{progressPct}% Complete</span>
           </div>
-          <div className="w-full bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800 p-0.5">
+          <div className="w-full bg-zinc-100 dark:bg-zinc-950 h-3 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-800 p-0.5">
             <div
               className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-500"
               style={{ width: `${progressPct}%` }}
@@ -135,7 +135,7 @@ export default function SprintBoard({
 
       {/* Verified Badge Header Banner if Completed */}
       {isFullyVerified && (
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-teal-950/60 to-slate-900/90 border border-emerald-500/40 flex items-center gap-5 animate-in fade-in duration-300 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+        <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-teal-950/60 to-zinc-900/90 border border-emerald-500/40 flex items-center gap-5 animate-in fade-in duration-300 shadow-xl text-white">
           <div className="p-3.5 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shrink-0">
             <Award className="w-8 h-8" />
           </div>
@@ -146,7 +146,7 @@ export default function SprintBoard({
             <h4 className="text-lg font-bold text-white">
               Sprint Verified! 100% Proof of Work Complete
             </h4>
-            <p className="text-xs text-slate-300 mt-1">
+            <p className="text-xs text-zinc-300 mt-1">
               Candidate badge hash: <code className="font-mono text-emerald-300">0x8f3a...d91c</code> (Shareable on recruiter candidate discovery portal)
             </p>
           </div>
@@ -162,17 +162,16 @@ export default function SprintBoard({
           const currentUrl = evidenceUrls[milestone.step] || '';
           const msg = messages[milestone.step];
           const recScore = recalculatedScores[milestone.step];
-          const resGap = resolvedGaps[milestone.step];
 
           return (
             <div
               key={milestone.step}
-              className={`p-6 rounded-2xl border transition-all ${
+              className={`p-6 rounded-2xl border transition-all shadow-sm ${
                 isVerified
-                  ? 'bg-emerald-950/10 border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.1)]'
+                  ? 'bg-emerald-500/5 dark:bg-emerald-950/10 border-emerald-500/40'
                   : isFailed
-                  ? 'bg-rose-950/10 border-rose-500/40'
-                  : 'bg-slate-900/60 border-slate-800'
+                  ? 'bg-rose-500/5 dark:bg-rose-950/10 border-rose-500/40'
+                  : 'bg-white dark:bg-zinc-900/60 border-zinc-200 dark:border-zinc-800'
               }`}
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
@@ -180,26 +179,26 @@ export default function SprintBoard({
                   <div
                     className={`w-9 h-9 rounded-xl flex items-center justify-center font-mono font-bold text-sm shrink-0 ${
                       isVerified
-                        ? 'bg-emerald-500 text-slate-950 shadow-[0_0_15px_rgba(16,185,129,0.4)]'
+                        ? 'bg-emerald-500 text-white dark:text-zinc-950 shadow-sm'
                         : isFailed
-                        ? 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
-                        : 'bg-slate-800 text-slate-300 border border-slate-700'
+                        ? 'bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/40'
+                        : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700'
                     }`}
                   >
                     {isVerified ? <CheckCircle2 className="w-5 h-5" /> : milestone.step}
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+                      <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                         Milestone Checkpoint {milestone.step}
                       </span>
                       {isVerified && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
                           VERIFIED
                         </span>
                       )}
                     </div>
-                    <h3 className="text-lg font-bold text-white">{milestone.title}</h3>
+                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white">{milestone.title}</h3>
                   </div>
                 </div>
 
@@ -208,7 +207,7 @@ export default function SprintBoard({
                     href={milestone.resource_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-950 text-xs font-mono text-slate-300 border border-slate-800 hover:text-emerald-400 hover:border-slate-700 transition-colors shrink-0 self-start"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-950 text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shrink-0 self-start"
                   >
                     <span>Learning Resource</span>
                     <ExternalLink className="w-3 h-3" />
@@ -216,22 +215,22 @@ export default function SprintBoard({
                 )}
               </div>
 
-              <p className="text-sm text-slate-300 leading-relaxed mb-6 pl-0 md:pl-13">
+              <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed mb-6 pl-0 md:pl-13">
                 {milestone.description}
               </p>
 
               {/* Proof of Work PR Input Form */}
-              <div className="pl-0 md:pl-13 pt-4 border-t border-slate-800/80 space-y-3">
-                <label className="text-xs font-mono text-slate-400 flex items-center gap-2">
-                  <GitPullRequest className="w-3.5 h-3.5 text-emerald-400" />
+              <div className="pl-0 md:pl-13 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 space-y-3">
+                <label className="text-xs font-mono text-zinc-600 dark:text-zinc-400 flex items-center gap-2">
+                  <GitPullRequest className="w-3.5 h-3.5 text-emerald-500" />
                   <span>Submit GitHub Pull Request Evidence URL</span>
                   
                   {/* Hover Tooltip */}
                   <div className="relative group/tooltip flex items-center">
-                    <Info className="w-3.5 h-3.5 text-slate-500 hover:text-emerald-400 cursor-help transition-colors" />
-                    <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover/tooltip:block w-64 p-3 bg-slate-900 border border-slate-700 text-[11px] font-sans text-slate-200 rounded-xl shadow-2xl z-50 pointer-events-none text-left">
+                    <Info className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 hover:text-emerald-500 cursor-help transition-colors" />
+                    <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover/tooltip:block w-64 p-3 bg-zinc-900 text-white border border-zinc-700 text-[11px] font-sans rounded-xl shadow-2xl z-50 pointer-events-none text-left">
                       Submit your open or merged GitHub Pull Request URL containing the milestone code implementation to verify proof of work.
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-700" />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-700" />
                     </div>
                   </div>
                 </label>
@@ -248,15 +247,15 @@ export default function SprintBoard({
                     }
                     placeholder="https://github.com/username/repo/pull/1"
                     disabled={isVerified}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-emerald-500 font-mono disabled:opacity-50 transition-colors"
+                    className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-emerald-500 font-mono disabled:opacity-50 transition-colors"
                   />
                   <button
                     onClick={() => handleVerifyStep(milestone.step)}
                     disabled={isVerifying || isVerified}
                     className={`w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs font-mono transition-all flex items-center justify-center gap-2 shrink-0 ${
                       isVerified
-                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 cursor-default'
-                        : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-[0_0_15px_rgba(16,185,129,0.2)] disabled:opacity-50'
+                        ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 cursor-default'
+                        : 'bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-zinc-950 shadow-sm disabled:opacity-50'
                     }`}
                   >
                     {isVerifying ? (
@@ -280,20 +279,20 @@ export default function SprintBoard({
                   <div
                     className={`p-3 rounded-xl border text-xs font-mono flex items-start gap-2.5 ${
                       isVerified
-                        ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-                        : 'bg-rose-500/10 border-rose-500/30 text-rose-300'
+                        ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300'
+                        : 'bg-rose-500/10 border-rose-500/30 text-rose-700 dark:text-rose-300'
                     }`}
                   >
                     {isVerified ? (
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                     ) : (
-                      <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                      <AlertCircle className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
                     )}
                     <div className="space-y-1">
                       <p>{msg}</p>
                       {recScore && (
-                        <div className="inline-flex items-center gap-1.5 text-[11px] text-teal-300 font-bold bg-slate-950 px-2.5 py-0.5 rounded border border-teal-500/30">
-                          <TrendingUp className="w-3 h-3 text-teal-400" />
+                        <div className="inline-flex items-center gap-1.5 text-[11px] text-teal-700 dark:text-teal-300 font-bold bg-white dark:bg-zinc-950 px-2.5 py-0.5 rounded border border-teal-500/30 shadow-sm">
+                          <TrendingUp className="w-3 h-3 text-teal-500" />
                           <span>Dynamic 360° Readiness Index: {recScore}/100</span>
                         </div>
                       )}

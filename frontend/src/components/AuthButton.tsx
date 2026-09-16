@@ -32,7 +32,7 @@ export default function AuthButton({ onTokenRetrieved }: AuthButtonProps) {
 
   if (loading) {
     return (
-      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-slate-500">
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-mono text-zinc-500">
         <Loader2 className="w-3.5 h-3.5 animate-spin" />
         <span>Auth Loading...</span>
       </div>
@@ -41,7 +41,7 @@ export default function AuthButton({ onTokenRetrieved }: AuthButtonProps) {
 
   if (user) {
     return (
-      <div className="flex items-center gap-3 p-1 rounded-xl bg-slate-900 border border-slate-800">
+      <div className="flex items-center gap-3 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center gap-2.5 px-2">
           {user.photoURL ? (
             <img
@@ -50,15 +50,15 @@ export default function AuthButton({ onTokenRetrieved }: AuthButtonProps) {
               className="w-7 h-7 rounded-full border border-emerald-500/40"
             />
           ) : (
-            <div className="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-slate-300">
+            <div className="w-7 h-7 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-300">
               <UserIcon className="w-4 h-4" />
             </div>
           )}
           <div className="flex flex-col text-left">
-            <span className="text-xs font-bold text-white leading-tight">
+            <span className="text-xs font-bold text-zinc-900 dark:text-white leading-tight">
               {user.displayName || 'GitHub User'}
             </span>
-            <span className="text-[10px] font-mono text-emerald-400 leading-none">
+            <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 leading-none">
               OAuth Token Active
             </span>
           </div>
@@ -67,7 +67,7 @@ export default function AuthButton({ onTokenRetrieved }: AuthButtonProps) {
         <button
           onClick={handleLogout}
           title="Sign Out"
-          className="p-2 rounded-lg bg-slate-950 hover:bg-rose-500/20 hover:text-rose-400 text-slate-400 transition-colors border border-slate-800"
+          className="p-2 rounded-lg bg-white dark:bg-zinc-950 hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 text-zinc-500 dark:text-zinc-400 transition-colors border border-zinc-200 dark:border-zinc-800"
         >
           <LogOut className="w-3.5 h-3.5" />
         </button>
@@ -79,7 +79,7 @@ export default function AuthButton({ onTokenRetrieved }: AuthButtonProps) {
     <button
       onClick={handleLogin}
       disabled={isAuthenticating}
-      className="flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] disabled:opacity-50 font-mono"
+      className="flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-zinc-950 transition-all shadow-sm disabled:opacity-50 font-mono"
     >
       {isAuthenticating ? (
         <>
